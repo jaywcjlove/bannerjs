@@ -1,0 +1,29 @@
+{
+  "name": "bannerjs",
+  "version": "1.0.0",
+  "description": "Get one-line/multi-line comment banner based on package.json.",
+  "bin": {
+    "bannerjs": "./bin/cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "kenny wang <wowohoo@qq.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaywcjlove/bannerjs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jaywcjlove/bannerjs/issues"
+  },
+  "keywords": [
+    "comment",
+    "banner",
+    "bannerjs",
+    "header",
+    "license",
+    "generator",
+    "package.json"
+  ]
+}
