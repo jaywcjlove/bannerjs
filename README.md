@@ -7,7 +7,7 @@ Add a banner to a string. Get one-line/multi-line comment banner based on packag
 Install with npm:
 
 ```bash
-npm i bannerjs --save-dev
+npm install bannerjs --save
 ```
 
 One-line results in:
@@ -66,6 +66,17 @@ You can easilly pipe unix commands together like:
 
 ```bash
 cat my-js.js | bannerjs -o | uglify-js > my-js.min.js
+```
+
+**Npm Script**
+
+```json
+{
+  "scripts":{
+    "build:min": "cat my-js.js | uglifyjs | bannerjs -o > dist/my-js.min.js",
+    "build:dist": "cat my-js.js | bannerjs -m | uglifyjs -b beautify=true --comments 'all' > dist/my-js.js "
+  }
+}
 ```
 
 # License
