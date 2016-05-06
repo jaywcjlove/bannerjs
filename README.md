@@ -10,13 +10,13 @@ Install with npm:
 npm i bannerjs --save-dev
 ```
 
-Multi-line results in:
+One-line results in:
 
 ```js
 /*! bannerjs v1.0.8 | MIT (c) 2016 kenny wang <wowohoo@qq.com> | https://github.com/jaywcjlove/bannerjs */
 ```
 
-One-line results in:
+Multi-line results in:
 
 ```js
 /*!
