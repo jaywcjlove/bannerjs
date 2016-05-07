@@ -79,6 +79,23 @@ cat my-js.js | bannerjs -o | uglify-js > my-js.min.js
 }
 ```
 
+# Use in gulp
+
+- `bannerjs.multibanner()` Multi-line results
+- `bannerjs.onebanner()` One-line results
+
+```js 
+var gulp = require('gulp');
+var banner = require('gulp-banner');
+var bannerjs = require('bannerjs');
+
+gulp.task('default', function() {
+    gulp.src('./test.js')
+        .pipe(banner(bannerjs.multibanner()))
+        .pipe(gulp.dest('dist/'));
+});
+```
+
 # License
 
 MIT license
