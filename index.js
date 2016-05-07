@@ -54,13 +54,13 @@ exports.multibanner = function () {
     var bn = bannersource();
     return (
       '/*!' +
-      '\n * '+bn.name+' v' + bn.version + 
-      '\n * Copyright'+' (c) ' + new Date().getFullYear() + ' ' + bn.author +
-      '\n * Licensed under the '+bn.license+' license.' +
-      '\n * ' + 
+      '\n * ' + bn.name+' v' + bn.version + 
       '\n * ' + bn.description +
+      '\n * ' + 
+      '\n * Copyright' + ' (c) ' + new Date().getFullYear() + ' ' + bn.author +
       '\n * ' + bn.homepage  +
       '\n * ' + 
+      '\n * Licensed under the '+bn.license+' license.' +
       '\n */\n'
     );
 };
