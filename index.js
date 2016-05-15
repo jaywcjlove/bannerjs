@@ -30,11 +30,18 @@ function bannersource(){
         description = ''
     }
 
+    var license = pkg.license
+    if(!license){
+      license = ''
+    }else if(license&&license.type){
+      license = license.type
+    }
+
     return {
         author:author,
         homepage:homepage,
         name:pkg.name,
-        license:pkg.license,
+        license:license,
         version:pkg.version,
         description:description
     }
