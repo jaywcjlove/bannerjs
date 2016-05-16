@@ -21,10 +21,12 @@ Multi-line results in:
 ```js
 /*!
  * bannerjs v1.0.0
+ * Add a banner to a string. Get one-line/multi-line comment banner based on package.json.
+ * 
  * Copyright (c) 2016 kenny wang <wowohoo@qq.com>
- * Licensed under the MIT license.
- *
  * https://github.com/jaywcjlove/bannerjs
+ *
+ * Licensed under the MIT license.
  */
 ```
 
@@ -36,6 +38,7 @@ The following keys should be defined in package.json:
 {
   "name": "bannerjs",
   "version": "1.0.0",
+  "description": "Add a banner to a string. Get one-line/multi-line comment banner based on package.json.",
   "license": "MIT",
   "author": {
     "name": "kenny wang"
@@ -49,7 +52,10 @@ The following keys should be defined in package.json:
 
 `author` value can be defined like object or simply string too.
 
-# Command Line
+
+# Use
+
+## Command Line
 
 ```bash
 Usage: bannerjs
@@ -79,7 +85,8 @@ cat my-js.js | bannerjs -o | uglify-js > my-js.min.js
 }
 ```
 
-# Use in gulp
+
+## Use in gulp
 
 - `bannerjs.multibanner()` Multi-line results
 - `bannerjs.onebanner()` One-line results
@@ -94,6 +101,23 @@ gulp.task('default', function() {
         .pipe(banner(bannerjs.multibanner()))
         .pipe(gulp.dest('dist/'));
 });
+```
+
+## Use in Node
+
+```js
+var fs = require('fs');
+var banner = require('bannerjs');
+var uglify = require('uglify-js')
+
+var code = fs.readFileSync('src/test.js', 'utf-8')
+var minified = banner.onebanner() + '\n' + uglify.minify(code, {
+  fromString: true,
+  output: {
+    ascii_only: true
+  }
+}).code;
+fs.writeFileSync('src/test.js', minified);
 ```
 
 # License
