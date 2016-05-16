@@ -1,4 +1,5 @@
 var fs = require('fs');
+var assign = require('object-assign');
 var pkg = require(process.cwd()+'/package.json')
 
 // var banner_str = (
@@ -47,8 +48,9 @@ function bannersource(){
     }
 }
 
-exports.onebanner = function () {
+exports.onebanner = function (option) {
     var bn = bannersource();
+    if(option) bn = assign(bn,option);
     return [ '/*! ', bn.name, ' v', bn.version,
         ' | ', bn.license, ' (c) ',
         new Date().getFullYear(), ' ', bn.author,
@@ -57,8 +59,9 @@ exports.onebanner = function () {
         ].join('')
 };
 
-exports.multibanner = function () {
+exports.multibanner = function (option) {
     var bn = bannersource();
+    if(option) bn = assign(bn,option);
     return (
       '/*!' +
       '\n * ' + bn.name+' v' + bn.version + 

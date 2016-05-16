@@ -55,34 +55,21 @@ The following keys should be defined in package.json:
 
 # Use
 
-## Command Line
+# option
 
-```bash
-Usage: bannerjs
+- `bannerjs.multibanner(option)` Multi-line results
+- `bannerjs.onebanner(option)` One-line results
 
-Pipe Usage: bannerjs
-
-Options:
-
- -m --multi     Output multi-line results
- -o --one       Output one-line results
-```
-
-You can easilly pipe unix commands together like:
-
-```bash
-cat my-js.js | bannerjs -o | uglify-js > my-js.min.js
-```
-
-**Npm Script**
-
-```json
-{
-  "scripts":{
-    "build:min": "cat my-js.js | uglifyjs | bannerjs -o > dist/my-js.min.js",
-    "build:dist": "cat my-js.js | bannerjs -m | uglifyjs -b beautify=true --comments 'all' > dist/my-js.js "
-  }
-}
+```js
+var banner = require('bannerjs');
+bannerjs.multibanner({
+  author:"banner.js",
+  homepage:"http://....",
+  name:"banner.js",
+  license:"MIT",
+  version:1.2.3,
+  description:"description"
+})
 ```
 
 
@@ -119,6 +106,38 @@ var minified = banner.onebanner() + '\n' + uglify.minify(code, {
 }).code;
 fs.writeFileSync('src/test.js', minified);
 ```
+
+
+## Command Line
+
+```bash
+Usage: bannerjs
+
+Pipe Usage: bannerjs
+
+Options:
+
+ -m --multi     Output multi-line results
+ -o --one       Output one-line results
+```
+
+You can easilly pipe unix commands together like:
+
+```bash
+cat my-js.js | bannerjs -o | uglify-js > my-js.min.js
+```
+
+**Npm Script**
+
+```json
+{
+  "scripts":{
+    "build:min": "cat my-js.js | uglifyjs | bannerjs -o > dist/my-js.min.js",
+    "build:dist": "cat my-js.js | bannerjs -m | uglifyjs -b beautify=true --comments 'all' > dist/my-js.js "
+  }
+}
+```
+
 
 # License
 
