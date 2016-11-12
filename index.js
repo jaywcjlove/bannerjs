@@ -15,7 +15,7 @@ var pkg = require(process.cwd()+'/package.json')
 function bannersource(){
 
     var author = pkg.author;
-    if (author['name']) {
+    if (author&&author['name']) {
         author = author.name;
     }
 
