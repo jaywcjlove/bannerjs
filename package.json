@@ -1,6 +1,6 @@
 {
   "name": "bannerjs",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Get one-line/multi-line comment banner based on package.json.",
   "bin": {
     "bannerjs": "./bin/cli.js"

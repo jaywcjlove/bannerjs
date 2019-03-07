@@ -1,6 +1,6 @@
 var fs = require('fs');
 var assign = require('object-assign');
-var pkg = require(process.cwd()+'/package.json')
+var pkg = require(process.cwd() + '/package.json')
 
 // var banner_str = (
 //   '/*!\n' +
@@ -12,65 +12,64 @@ var pkg = require(process.cwd()+'/package.json')
 //   '\n */\n'
 // );
 
-function bannersource(){
+function bannersource() {
 
-    var author = pkg.author;
-    if (author&&author['name']) {
+    var author = pkg.author || '';
+    if (author && author['name']) {
         author = author.name;
     }
 
     var homepage = pkg.homepage;
-    if(!homepage&&pkg.repository&&pkg.repository.url){
+    if (!homepage && pkg.repository && pkg.repository.url) {
         homepage = pkg.repository.url
-    }else if(!homepage){
+    }
+    if (!homepage) {
         homepage = ''
     }
 
-    var description = pkg.description;
-    if(!description){
+    var description = pkg.description || '';
+    if (!description) {
         description = ''
     }
 
-    var license = pkg.license
-    if(!license){
-      license = ''
-    }else if(license&&license.type){
-      license = license.type
+    var license = pkg.license || ''
+    if (license && license.type) {
+        license = license.type
     }
 
     return {
-        author:author,
-        homepage:homepage,
-        name:pkg.name,
-        license:license,
-        version:pkg.version,
-        description:description
+        author: author,
+        homepage: homepage,
+        name: pkg.name,
+        license: license,
+        version: pkg.version,
+        description: description
     }
 }
 
 exports.onebanner = function (option) {
     var bn = bannersource();
-    if(option) bn = assign(bn,option);
-    return [ '/*! ', bn.name, ' v', bn.version,
+    if (option) bn = assign(bn, option);
+    return ['/*! ', bn.name, ' v', bn.version,
         ' | ', bn.license, ' (c) ',
         new Date().getFullYear(), ' ', bn.author,
         ' | ', bn.homepage,
         ' */',
-        ].join('')
+    ].join('')
 };
 
 exports.multibanner = function (option) {
     var bn = bannersource();
-    if(option) bn = assign(bn,option);
+    if (option) bn = assign(bn, option);
     return (
-      '/*!' +
-      '\n * ' + bn.name+' v' + bn.version + 
-      '\n * ' + bn.description +
-      '\n * ' + 
-      '\n * Copyright' + ' (c) ' + new Date().getFullYear() + ' ' + bn.author +
-      '\n * ' + bn.homepage  +
-      '\n * ' + 
-      '\n * Licensed under the '+bn.license+' license.' +
-      '\n */\n'
+        '/*!' +
+        '\n * ' + bn.name + ' v' + bn.version +
+        '\n * ' + bn.description +
+        '\n * ' +
+        '\n * Copyright' + ' (c) ' + new Date().getFullYear() + ' ' + bn.author +
+        '\n * ' + bn.homepage +
+        '\n * ' +
+        '\n * Licensed under the ' + bn.license + ' license.' +
+        '\n */\n'
     );
 };
