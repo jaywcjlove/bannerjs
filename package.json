@@ -5,9 +5,6 @@
   "bin": {
     "bannerjs": "./bin/cli.js"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "kenny wang <wowohoo@qq.com>",
   "license": "MIT",
   "repository": {
