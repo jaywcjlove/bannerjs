@@ -28,6 +28,6 @@
     "package.json"
   ],
   "dependencies": {
-    "object-assign": "^4.1.1"
+    "object-assign": "4.1.1"
   }
 }
