@@ -2,7 +2,7 @@
 
 Add a banner to a string. Get one-line/multi-line comment banner based on package.json.
 
-# Install
+## Install
 
 Install with npm:
 
@@ -30,7 +30,7 @@ Multi-line results in:
  */
 ```
 
-# Structure
+## Structure
 
 The following keys should be defined in package.json:
 
@@ -53,12 +53,12 @@ The following keys should be defined in package.json:
 `author` value can be defined like object or simply string too.
 
 
-# Use
+## Use
 
-# option
+### option
 
-- `bannerjs.multibanner(option)` Multi-line results
-- `bannerjs.onebanner(option)` One-line results
+- `multibanner(option)` Multi-line results
+- `onebanner(option)` One-line results
 
 ```js
 var banner = require('bannerjs');
@@ -72,6 +72,15 @@ bannerjs.multibanner({
 })
 ```
 
+### API
+
+```ts
+import { PackageJson } from 'types-package-json';
+
+export declare function getPackage(rootPath?: string): PackageJson;
+export declare function onebanner(option?: PackageJson): string;
+export declare function multibanner(option?: PackageJson): string;
+```
 
 ## Use in gulp
 
@@ -84,9 +93,9 @@ var banner = require('gulp-banner');
 var bannerjs = require('bannerjs');
 
 gulp.task('default', function() {
-    gulp.src('./test.js')
-        .pipe(banner(bannerjs.multibanner()))
-        .pipe(gulp.dest('dist/'));
+  gulp.src('./test.js')
+    .pipe(banner(bannerjs.multibanner()))
+    .pipe(gulp.dest('dist/'));
 });
 ```
 
@@ -104,6 +113,7 @@ var minified = banner.onebanner() + '\n' + uglify.minify(code, {
     ascii_only: true
   }
 }).code;
+
 fs.writeFileSync('src/test.js', minified);
 ```
 
@@ -137,7 +147,6 @@ cat my-js.js | bannerjs -o | uglify-js > my-js.min.js
   }
 }
 ```
-
 
 # License
 

@@ -7,6 +7,13 @@
   },
   "author": "kenny wang <wowohoo@qq.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "node lib/index.js",
+    "watch": "tsbb watch --no-esm --disable-babel",
+    "build": "tsbb build --no-esm --disable-babel",
+    "test": "tsbb test",
+    "coverage": "tsbb test --coverage"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/jaywcjlove/bannerjs.git"
@@ -27,7 +34,8 @@
     "generator",
     "package.json"
   ],
-  "dependencies": {
-    "object-assign": "4.1.1"
+  "devDependencies": {
+    "types-package-json": "2.0.39",
+    "tsbb": "^3.0.4"
   }
 }
