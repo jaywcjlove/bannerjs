@@ -23,7 +23,8 @@
   },
   "files": [
     "bin",
-    "index.js"
+    "src",
+    "lib"
   ],
   "keywords": [
     "comment",
