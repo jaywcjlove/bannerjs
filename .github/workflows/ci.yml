@@ -46,10 +46,10 @@ jobs:
         tag: ${{ steps.create_tag.outputs.version }}
         token: ${{ secrets.GITHUB_TOKEN }}
         body: |
-          [![](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/bannerjs@${{steps.changelog.outputs.version}}/file/README.md)
+          [![](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/bannerjs@${{steps.create_tag.outputs.versionNumbe}}/file/README.md)
 
           ```bash
-          npm i bannerjs@${{steps.changelog.outputs.version}}
+          npm i bannerjs@${{steps.create_tag.outputs.versionNumber}}
           ```
 
           ${{ steps.changelog.outputs.compareurl }}
