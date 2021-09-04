@@ -1,5 +1,7 @@
 # bannerjs
 
+[![npm version](https://img.shields.io/npm/v/bannerjs.svg)](https://www.npmjs.com/package/bannerjs) [![NPM Download](https://img.shields.io/npm/dm/bannerjs.svg?style=flat)](https://www.npmjs.com/package/bannerjs)
+
 Add a banner to a string. Get one-line/multi-line comment banner based on package.json.
 
 ## Install
