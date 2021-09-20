@@ -35,6 +35,12 @@
     "generator",
     "package.json"
   ],
+  "jest": {
+    "coverageReporters": [
+      "lcov",
+      "json-summary"
+    ]
+  },
   "devDependencies": {
     "types-package-json": "2.0.39",
     "tsbb": "3.2.1"

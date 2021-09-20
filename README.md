@@ -1,6 +1,6 @@
 # bannerjs
 
-[![npm version](https://img.shields.io/npm/v/bannerjs.svg)](https://www.npmjs.com/package/bannerjs) [![NPM Download](https://img.shields.io/npm/dm/bannerjs.svg?style=flat)](https://www.npmjs.com/package/bannerjs) [![Coverage Status](https://coveralls.io/repos/github/jaywcjlove/bannerjs/badge.svg?branch=master)](https://coveralls.io/github/jaywcjlove/bannerjs?branch=master)
+[![npm version](https://img.shields.io/npm/v/bannerjs.svg)](https://www.npmjs.com/package/bannerjs) [![NPM Download](https://img.shields.io/npm/dm/bannerjs.svg?style=flat)](https://www.npmjs.com/package/bannerjs) [![Coverage Status](https://jaywcjlove.github.io/bannerjs/coverage/badges.svg)](https://jaywcjlove.github.io/bannerjs/coverage/lcov-report/)
 
 Add a banner to a string. Get one-line/multi-line comment banner based on package.json.
 
