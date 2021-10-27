@@ -119,6 +119,22 @@ var minified = banner.onebanner() + '\n' + uglify.minify(code, {
 fs.writeFileSync('src/test.js', minified);
 ```
 
+## Use in Rollup
+
+```js
+import banner from 'bannerjs';
+
+// rollup.config.js
+export default {
+  input: 'src/main.js',
+  output: {
+    file: 'bundle.js',
+    format: 'cjs',
+    banner: banner.multibanner()
+  }
+};
+```
+
 
 ## Command Line
 
