@@ -9,7 +9,7 @@ export function run() {
   let multi = false;
   let one = false;
 
-  args = args.filter(function (arg) {
+  args = args.filter((arg) => {
     if (arg === '-h' || arg === '--help') {
       help = true
       return false
@@ -24,31 +24,35 @@ export function run() {
   });
 
   if (help) {
-    console.log('Usage: bannerjs');
-    console.log('');
-    console.log('Pipe Usage: bannerjs');
-    console.log('');
-    console.log('Options:');
-    console.log('');
-    console.log(' -m --multi     Output multi-line results');
-    console.log(' -o --one       Output one-line results');
-    console.log('');
-    if (!help) process.exit(1);
-  } else {
-    let bannerStr = '';
-    if (multi) {
-      bannerStr = multibanner();
-    } else {
-      bannerStr = onebanner();
-    }
+    const helpStr = `
+    Usage: bannerjs
 
-    let dest = args[2] ? createWriteStream(args[2]) : process.stdout;
-    let source = args[1] ? createReadStream(args[1]) : process.stdin;
+    Pipe Usage: bannerjs
 
-    dest.write(`${bannerStr}\n`);
-    source.on('end', () => {
-      dest.write('\n');
-    })
-    .pipe(dest, { end: true });
+    -m --multi     Output multi-line results
+    -o --one       Output one-line results
+
+    `;
+    console.log(helpStr);
+    return;
   }
+
+  let bannerStr = '';
+  if (multi) {
+    bannerStr = multibanner();
+  } else {
+    bannerStr = onebanner();
+  }
+
+  let dest = args[2] ? createWriteStream(args[2]) : process.stdout;
+  let source = args[1] ? createReadStream(args[1]) : process.stdin;
+
+  dest.write(`${bannerStr}\n`);
+  source.on('end', () => {
+    dest.write('\n');
+  })
+  .on('error', (err) => {
+    console.log('ERR:', err)
+  })
+  .pipe(dest, { end: true });
 }

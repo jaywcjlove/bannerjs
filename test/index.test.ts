@@ -35,6 +35,6 @@ it('multibanner test case', async () => {
   const des = multibanner();
   expect(typeof des).toEqual('string');
   const desName = multibanner({ name: 'pkgname', version: '1.0.0' });
-  expect(desName.indexOf('/**!\n')).toEqual(0);
+  expect(desName.indexOf(' * pkgname v1.0.0') > 1).toBeTruthy();
   expect(desName.includes('pkgname v1.0.0')).toBeTruthy();
 });

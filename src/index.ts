@@ -35,20 +35,27 @@ export function onebanner(option?: PackageJson) {
   if (option) {
     bn = Object.assign(bn, option);
   }
-  return `/*! ${bn.name} v${bn.version} | ${bn.license} © ${new Date().getFullYear()} ${bn.author} ${bn.homepage} */`
+  return [
+    '/*!', bn.name, bn.version && `v${bn.version}`,
+    bn.license && `| ${bn.license}`,
+    `© ${new Date().getFullYear()}`,
+    bn.author,
+    bn.homepage,
+    '*/'
+  ].filter(Boolean).join(' ');
 }
 
 export function multibanner(option?: PackageJson) {
   let bn = getPackage();
   if (option) bn = Object.assign(bn, option);
-  const str = `/**!
-  * ${bn.name} v${bn.version}
-  * ${bn.description}
-  * 
-  * Copyright (c) ${new Date().getFullYear()} ${bn.author}
-  * ${bn.homepage}
-  * Licensed under the ${bn.license} license.
-  */\n
-  `;
-  return str;
+  return [
+    '/**!',
+    '\n *', bn.name, bn.version && `v${bn.version}`,
+    '\n *', bn.description,
+    '\n *',
+    `\n * Copyright (c) ${new Date().getFullYear()}`, bn.author,
+    '\n *', bn.homepage,
+    '\n *', bn.license && `Licensed under the ${bn.license} license`,
+    '\n */\n'
+  ].filter(Boolean).join(' ');
 }
