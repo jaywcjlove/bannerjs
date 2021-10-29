@@ -14,9 +14,10 @@ export function getPackage(rootPath: string = process.cwd()): PackageJson {
     pkg.author = pkg.author.name;
   }
 
-  if (!pkg.homepage && pkg.repository && pkg.repository.url) {
-    pkg.homepage = pkg.repository.url;
+  if (!pkg.homepage && pkg.repository) {
+    pkg.homepage = typeof pkg.repository === 'string' ? pkg.repository : pkg.repository.url;
   }
+
   if (!pkg.homepage) {
     pkg.homepage = '';
   }
@@ -34,26 +35,20 @@ export function onebanner(option?: PackageJson) {
   if (option) {
     bn = Object.assign(bn, option);
   }
-  return ['/*! ', bn.name, ' v', bn.version,
-    ' | ', bn.license, ' (c) ',
-    new Date().getFullYear(), ' ', bn.author,
-    ' | ', bn.homepage,
-    ' */',
-  ].filter(Boolean).join('');
+  return `/*! ${bn.name} v${bn.version} | ${bn.license} © ${new Date().getFullYear()} ${bn.author} ${bn.homepage} */`
 }
 
 export function multibanner(option?: PackageJson) {
   let bn = getPackage();
   if (option) bn = Object.assign(bn, option);
-  const result: string[] = [];
-  result.push('/**!');
-  result.push(`\n * ${bn.name} v${bn.version}`);
-  result.push(`\n * ${bn.description}`);
-  result.push(`\n * `);
-  result.push(`\n * Copyright (c) ${new Date().getFullYear()} ${bn.author}`);
-  result.push(`\n * ${bn.homepage}`);
-  result.push(`\n * `);
-  result.push(`\n * Licensed under the ${bn.license} license.`);
-  result.push(`\n */\n`);
-  return result.filter(Boolean).join('');
+  const str = `/**!
+  * ${bn.name} v${bn.version}
+  * ${bn.description}
+  * 
+  * Copyright (c) ${new Date().getFullYear()} ${bn.author}
+  * ${bn.homepage}
+  * Licensed under the ${bn.license} license.
+  */\n
+  `;
+  return str;
 }
