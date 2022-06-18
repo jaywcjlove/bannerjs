@@ -45,6 +45,6 @@
   },
   "devDependencies": {
     "types-package-json": "2.0.39",
-    "tsbb": "3.3.7"
+    "tsbb": "3.7.5"
   }
 }
