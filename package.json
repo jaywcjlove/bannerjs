@@ -1,6 +1,6 @@
 {
   "name": "bannerjs",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "Get one-line/multi-line comment banner based on package.json.",
   "homepage": "https://jaywcjlove.github.io/bannerjs/",
   "bin": {
