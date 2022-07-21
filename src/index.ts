@@ -31,8 +31,8 @@ export function getPackage(rootPath: string = process.cwd()): PackageJson {
   return pkg;
 }
 
-export function onebanner(option?: PackageJson) {
-  let bn = getPackage();
+export function onebanner(option?: PackageJson, rootPath: string = process.cwd()) {
+  let bn = getPackage(rootPath);
   if (option) {
     bn = Object.assign(bn, option);
   }
@@ -46,8 +46,8 @@ export function onebanner(option?: PackageJson) {
   ].filter(Boolean).join(' ');
 }
 
-export function multibanner(option?: PackageJson) {
-  let bn = getPackage();
+export function multibanner(option?: PackageJson, rootPath: string = process.cwd()) {
+  let bn = getPackage(rootPath);
   if (option) bn = Object.assign(bn, option);
   return [
     '/**!',

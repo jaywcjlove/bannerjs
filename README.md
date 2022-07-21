@@ -82,10 +82,11 @@ bannerjs.multibanner({
 
 ```ts
 import { PackageJson } from 'types-package-json';
+export * from './cli.js';
 
 export declare function getPackage(rootPath?: string): PackageJson;
-export declare function onebanner(option?: PackageJson): string;
-export declare function multibanner(option?: PackageJson): string;
+export declare function onebanner(option?: PackageJson, rootPath?: string): string;
+export declare function multibanner(option?: PackageJson, rootPath?: string): string;
 ```
 
 ## Use in gulp
