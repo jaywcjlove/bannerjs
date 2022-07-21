@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">85.71% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>18/21</span>
+                <span class='fraction'>21/21</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">78.57% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>22/28</span>
+                <span class='fraction'>35/35</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">85% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>17/20</span>
+                <span class='fraction'>20/20</span>
             </div>
         
             
@@ -54,6 +54,12 @@
         <p class="quiet">
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input oninput="onInput()" type="search" id="fileSearch">
+            </div>
+        </template>
     </div>
     <div class='status-line high'></div>
     <pre><table class="coverage">
@@ -117,7 +123,10 @@
 <a name='L58'></a><a href='#L58'>58</a>
 <a name='L59'></a><a href='#L59'>59</a>
 <a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -126,27 +135,28 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -177,33 +187,36 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import path from 'path';
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import path from 'node:path';
+import fs from 'node:fs';
 import { PackageJson } from 'types-package-json';
 &nbsp;
-export * from './cli';
+export * from './cli.js';
 &nbsp;
 /**
  * Get package.json Object
  */
 export function getPackage(rootPath: string = process.cwd()): PackageJson {
   const pkgPath = path.resolve(rootPath, 'package.json');
-  const pkg: PackageJson = require(pkgPath);
+  const pkg: PackageJson = JSON.parse(fs.readFileSync(pkgPath).toString());
   pkg.author = pkg.author;
   if (pkg.author &amp;&amp; typeof pkg.author === 'object' &amp;&amp; pkg.author.name) {
     pkg.author = pkg.author.name;
   }
 &nbsp;
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (!pkg.homepage &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >pkg.repository)</span> {
-<span class="cstat-no" title="statement not covered" >    pkg.homepage = typeof pkg.repository === 'string' ? pkg.repository : pkg.repository.url;</span>
+  if (!pkg.homepage &amp;&amp; pkg.repository) {
+    pkg.homepage = typeof pkg.repository === 'string' ? pkg.repository : pkg.repository.url;
   }
 &nbsp;
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (!pkg.homepage) {
-<span class="cstat-no" title="statement not covered" >    pkg.homepage = '';</span>
+  if (!pkg.homepage) {
+    pkg.homepage = '';
   }
 &nbsp;
   pkg.description = pkg.description;
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (!pkg.description) {
-<span class="cstat-no" title="statement not covered" >      pkg.description = '';</span>
+  if (!pkg.description) {
+      pkg.description = '';
   }
 &nbsp;
   return pkg;
@@ -230,10 +243,12 @@ export function multibanner(option?: PackageJson) {
   return [
     '/**!',
     '\n *', bn.name, bn.version &amp;&amp; `v${bn.version}`,
-    '\n *', bn.description,
+    bn.description &amp;&amp; `\n * ${bn.description}`,
     '\n *',
     `\n * Copyright (c) ${new Date().getFullYear()}`, bn.author,
-    '\n *', bn.homepage,
+    '\n *', bn.repository &amp;&amp; bn.repository.url &amp;&amp; bn.repository.url,
+    '\n *',
+    bn.homepage &amp;&amp; `\n * @website: ${bn.homepage}\n`,
     '\n *', bn.license &amp;&amp; `Licensed under the ${bn.license} license`,
     '\n */\n'
   ].filter(Boolean).join(' ');
@@ -243,10 +258,9 @@ export function multibanner(option?: PackageJson) {
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
-                <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Fri Oct 29 2021 09:47:21 GMT+0000 (Coordinated Universal Time)
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2022-07-21T02:02:31.547Z
             </div>
-        </div>
         <script src="prettify.js"></script>
         <script>
             window.onload = function () {
