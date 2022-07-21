@@ -6,7 +6,7 @@ Add a banner to a string. Get one-line/multi-line comment banner based on packag
 
 ## Install
 
-Install with npm:
+This package is [ESM only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c): Node 14+ is needed to use it and it must be `import` instead of `require`.
 
 ```bash
 npm install bannerjs --save

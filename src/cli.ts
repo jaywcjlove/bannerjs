@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { createReadStream, createWriteStream } from 'fs';
-import { onebanner, multibanner } from './';
+import { onebanner, multibanner } from './index.js';
 
 export function run() {
   let args = process.argv.slice(2)

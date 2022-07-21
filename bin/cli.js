@@ -1,4 +1,5 @@
 #!/usr/bin/env node
 
-const bannerjs = require('../lib');
-bannerjs.run();
+import { run } from '../lib/index.js';
+
+run();

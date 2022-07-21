@@ -3,12 +3,14 @@
   "version": "2.1.0",
   "description": "Get one-line/multi-line comment banner based on package.json.",
   "homepage": "https://jaywcjlove.github.io/bannerjs/",
-  "main": "lib/index.js",
   "bin": {
     "bannerjs": "./bin/cli.js"
   },
   "author": "kenny wang <wowohoo@qq.com>",
   "license": "MIT",
+	"type": "module",
+	"exports": "./index.js",
+	"types": "./index.d.ts",
   "scripts": {
     "start": "node lib/index.js",
     "watch": "tsbb watch --disable-babel",
@@ -28,6 +30,9 @@
     "src",
     "lib"
   ],
+	"engines": {
+		"node": ">=14.16"
+	},
   "keywords": [
     "comment",
     "banner",
@@ -41,10 +46,13 @@
     "coverageReporters": [
       "lcov",
       "json-summary"
-    ]
+    ],
+    "moduleNameMapper": {
+      "^(\\.{1,2}/.*)\\.js$": "$1"
+    }
   },
   "devDependencies": {
-    "types-package-json": "2.0.39",
-    "tsbb": "3.3.7"
+    "types-package-json": "^2.0.39",
+    "tsbb": "^3.7.6"
   }
 }
