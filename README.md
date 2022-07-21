@@ -1,6 +1,10 @@
 # bannerjs
 
-[![npm version](https://img.shields.io/npm/v/bannerjs.svg)](https://www.npmjs.com/package/bannerjs) [![NPM Download](https://img.shields.io/npm/dm/bannerjs.svg?style=flat)](https://www.npmjs.com/package/bannerjs) [![Coverage Status](https://jaywcjlove.github.io/bannerjs/badges.svg)](https://jaywcjlove.github.io/bannerjs/lcov-report/)
+[![Build & Deploy](https://github.com/jaywcjlove/bannerjs/actions/workflows/ci.yml/badge.svg)](https://github.com/jaywcjlove/bannerjs/actions/workflows/ci.yml)
+[![Coverage Status](https://jaywcjlove.github.io/bannerjs/badges.svg)](https://jaywcjlove.github.io/bannerjs/lcov-report/)
+[![Repo Dependents](https://badgen.net/github/dependents-repo/jaywcjlove/bannerjs)](https://github.com/jaywcjlove/bannerjs/network/dependents)
+[![npm version](https://img.shields.io/npm/v/bannerjs.svg)](https://www.npmjs.com/package/bannerjs)
+[![NPM Download](https://img.shields.io/npm/dm/bannerjs.svg?style=flat)](https://www.npmjs.com/package/bannerjs)
 
 Add a banner to a string. Get one-line/multi-line comment banner based on package.json.
 
