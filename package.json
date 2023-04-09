@@ -13,8 +13,8 @@
 	"types": "./lib/index.d.ts",
   "scripts": {
     "start": "node lib/index.js",
-    "watch": "tsbb watch --disable-babel",
-    "build": "tsbb build --disable-babel",
+    "watch": "tsbb watch",
+    "build": "tsbb build",
     "test": "tsbb test",
     "coverage": "tsbb test --coverage"
   },
@@ -53,6 +53,6 @@
   },
   "devDependencies": {
     "types-package-json": "^2.0.39",
-    "tsbb": "^3.7.6"
+    "tsbb": "^4.1.5"
   }
 }
