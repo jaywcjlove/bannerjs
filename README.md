@@ -1,5 +1,6 @@
 # bannerjs
 
+[![Buy me a coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-048754?logo=buymeacoffee)](https://jaywcjlove.github.io/#/sponsor)
 [![Build & Deploy](https://github.com/jaywcjlove/bannerjs/actions/workflows/ci.yml/badge.svg)](https://github.com/jaywcjlove/bannerjs/actions/workflows/ci.yml)
 [![Coverage Status](https://jaywcjlove.github.io/bannerjs/badges.svg)](https://jaywcjlove.github.io/bannerjs/lcov-report/)
 [![Repo Dependents](https://badgen.net/github/dependents-repo/jaywcjlove/bannerjs)](https://github.com/jaywcjlove/bannerjs/network/dependents)
